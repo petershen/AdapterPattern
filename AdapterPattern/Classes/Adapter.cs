@@ -8,19 +8,19 @@ namespace AdapterPattern.Classes
     {
         private AmazonS3Storage _s3Storage = new AmazonS3Storage();
 
-        public override void AddDocument(string documentPath)
+        public override Document AddDocument(string documentPath)
         {
-            _s3Storage.AddFile(documentPath);
+            return _s3Storage.AddFile(documentPath);
         }
 
-        public override void GetDocument(string documentName)
+        public override Document GetDocument(string documentName)
         {
-            _s3Storage.GetFile(documentName);
+            return _s3Storage.GetFile(documentName);
         }
 
-        public override void ListDocuments()
+        public override IEnumerable<Document> ListDocuments()
         {
-            _s3Storage.ListFiles();
+            return _s3Storage.ListFiles();
         }
 
         public override void DeleteDocument(string documentName)

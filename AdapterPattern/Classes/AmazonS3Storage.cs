@@ -6,19 +6,30 @@ namespace AdapterPattern.Classes
 {
     public class AmazonS3Storage
     {
-        public void AddFile(string filePath)
+        public FileObject AddFile(string filePath)
         {
+            FileObject file = new FileObject
+            {
+                Path = filePath
+            };
             Console.WriteLine($"Called AmazonS3Storage.AddDocument({filePath})");
+            return file;
         }
 
-        public void ListFiles()
+        public IEnumerable<FileObject> ListFiles()
         {
             Console.WriteLine($"Called AmazonS3Storage.ListDocuments()");
+            return new List<FileObject>();
         }
 
-        public void GetFile(string fileName)
+        public FileObject GetFile(string fileName)
         {
+            FileObject file = new FileObject
+            {
+                Name = fileName
+            };
             Console.WriteLine($"Called AmazonS3Storage.GetDocument({fileName})");
+            return file;
         }
 
         public void DeleteFile(string fileName)

@@ -6,19 +6,31 @@ namespace AdapterPattern.Classes
 {
     public class DocumentStorage
     {
-        public virtual void AddDocument(string documentPath)
+        public virtual Document AddDocument(string documentPath)
         {
-            Console.WriteLine($"Called DocumentStorage.AddDocument({documentPath})");
+            Document doc = new Document
+            {
+                Path = documentPath
+            };
+            Console.WriteLine($"Called DocumentStorage.AddDocument({doc.Path})");
+            return doc;
+
         }
 
-        public virtual void ListDocuments()
+        public virtual IEnumerable<Document> ListDocuments()
         {
             Console.WriteLine($"Called DocumentStorage.ListDocuments()");
+            return new List<Document>();
         }
 
-        public virtual void GetDocument(string documentName)
+        public virtual Document GetDocument(string documentName)
         {
-            Console.WriteLine($"Called DocumentStorage.GetDocument({documentName})");
+            Document doc = new Document
+            {
+                Name = documentName
+            };
+            Console.WriteLine($"Called DocumentStorage.GetDocument({doc.Name})");
+            return doc;
         }
 
         public virtual void DeleteDocument(string documentName)
